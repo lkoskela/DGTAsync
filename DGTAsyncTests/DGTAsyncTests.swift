@@ -67,7 +67,7 @@ class DGTAsyncTests: XCTestCase {
     func testChaining() {
         let expectation: XCTestExpectation = self.expectationWithDescription("DGTAsync Chaining")
         
-        var output = Output()
+        let output = Output()
         DGTAsync.background { cb in
             output.add("1")
             cb(nil)
@@ -85,10 +85,10 @@ class DGTAsyncTests: XCTestCase {
         
         self.waitForExpectationsWithTimeout(3, handler: { (error: NSError?) -> Void in
             if let desc = error?.localizedDescription {
-                println("done with error = \(desc)")
+                print("done with error = \(desc)")
             }
             else {
-                println("done with no error")
+                print("done with no error")
             }
         })
     }
@@ -96,7 +96,7 @@ class DGTAsyncTests: XCTestCase {
     func testAsync() {
         let expectation: XCTestExpectation = self.expectationWithDescription("DGTAsync can handle async tasks")
         
-        var output = Output()
+        let output = Output()
         DGTAsync.background { cb in
             output.add("1")
             cb(nil)
@@ -117,10 +117,10 @@ class DGTAsyncTests: XCTestCase {
         
         self.waitForExpectationsWithTimeout(3, handler: { (error: NSError?) -> Void in
             if let desc = error?.localizedDescription {
-                println("done with error = \(desc)")
+                print("done with error = \(desc)")
             }
             else {
-                println("done with no error")
+                print("done with no error")
             }
         })
     }
@@ -128,7 +128,7 @@ class DGTAsyncTests: XCTestCase {
     func testError() {
         let expectation: XCTestExpectation = self.expectationWithDescription("DGTAsync can handle error")
         
-        var output = Output()
+        let output = Output()
         DGTAsync.background { cb in
             output.add("1")
             cb(nil)
@@ -152,10 +152,10 @@ class DGTAsyncTests: XCTestCase {
         
         self.waitForExpectationsWithTimeout(3, handler: { (error: NSError?) -> Void in
             if let desc = error?.localizedDescription {
-                println("done with error = \(desc)")
+                print("done with error = \(desc)")
             }
             else {
-                println("done with no error")
+                print("done with no error")
             }
         })
     }
@@ -163,7 +163,7 @@ class DGTAsyncTests: XCTestCase {
     func testParallel() {
         let expectation: XCTestExpectation = self.expectationWithDescription("DGTAsync can run tasks parallel")
         
-        var output = Output()
+        let output = Output()
         DGTAsync.pbackground { cb in
             self.asyncTaskTimeUse(cb, timeuse: 2, output)
         }.pbackground { cb in
@@ -185,10 +185,10 @@ class DGTAsyncTests: XCTestCase {
         
         self.waitForExpectationsWithTimeout(10, handler: { (error: NSError?) -> Void in
             if let desc = error?.localizedDescription {
-                println("done with error = \(desc)")
+                print("done with error = \(desc)")
             }
             else {
-                println("done with no error")
+                print("done with no error")
             }
         })
     }
